@@ -1,0 +1,63 @@
+.image {
+    height: 300px;
+    margin: 20px;
+    width: 250px;
+}
+
+.nome {
+    font-size: 50px;
+    display: flex;
+    width: 200px;
+}
+
+.type {
+    display: flex;
+    width: 100px;
+}
+
+.info {
+    display: flex;
+    border-radius: 10px;
+    padding: 20px;
+    height: 300px;
+    width: 500px;
+    justify-content: space-between; 
+}
+
+.more_info {
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+    width: 400px;
+    
+}
+
+.abilities {
+    width: 150px;
+    height: 200px;
+    display: flex;
+    align-self: flex-start;
+    margin: 20px;
+    background-color: rgb(189, 156, 116);
+    border-radius: 10px;
+    padding: 20px;
+    flex-direction: column;
+    box-shadow: 0 5px 5px rgb(0,0,0,0.5);
+}
+
+.stats {
+    width: 150px;
+    height: 200px;
+    display: flex;
+    align-self: flex-end;
+    margin: 20px;
+    background-color: rgb(189, 156, 116);
+    border-radius: 10px;
+    padding: 20px;
+    flex-direction: column;
+    box-shadow: 0 5px 5px rgb(0,0,0,0.5);
+}
+
+.stats_size {
+    font-size: 19px;
+}
