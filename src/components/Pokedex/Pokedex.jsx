@@ -1,15 +1,14 @@
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useRef } from "react";
 import PokeInfo from "../PokeInfo/PokeInfo";
 import Pokemon from "../Pokemon/Pokemon";
 import "./Pokedex.css";
 
 const Pokedex = () => {
-  const [Pokemons, setPokemons] = useState([]);
+  const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [Info, setInfo] = useState();
-  const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon?limit=20");
+  const [pokedex, setPokedex] = useState();
+  const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
   const [previousUrl, setPreviousUrl] = useState();
   const [nextUrl, setNextUrl] = useState();
 
@@ -42,30 +41,37 @@ const Pokedex = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="pokemons_list_container">
         <Pokemon
-          pokemon={Pokemons}
+          pokemon={pokemons}
           loading={loading}
-          infoPokemon={(pokeInfo) => setInfo(pokeInfo)}
+          infoPokemon={(pokeInfo) => setPokedex(pokeInfo)}
         />
-        <div className="buttons">
-          <button className="previous" onClick={() => {
-            shouldLog.current = true;
-            setPokemons([])
-            setUrl(previousUrl);
-            console.log(previousUrl)
-          }}>Previous</button>
-
-          <button className="next" onClick={() => {
-            shouldLog.current = true;
-            setPokemons([])
-            setUrl(nextUrl);
-            console.log(nextUrl)
-          }}>Next</button>
+        <div className="buttons_wrapper">
+          <button
+            className="previous_button"
+            onClick={() => {
+              shouldLog.current = true;
+              setPokemons([]);
+              setUrl(previousUrl);
+            }}
+          >
+            Previous
+          </button>
+          <button
+            className="next_button"
+            onClick={() => {
+              shouldLog.current = true;
+              setPokemons([]);
+              setUrl(nextUrl);
+            }}
+          >
+            Next
+          </button>
         </div>
       </div>
-      <div className="info-container">
-        <PokeInfo pokemon={Info} />
+      <div className="pokedex-container">
+        <PokeInfo pokemon={pokedex} />
       </div>
     </>
   );

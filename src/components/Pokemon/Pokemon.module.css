@@ -1,15 +1,14 @@
-.card {
-    border: solid 5px rgb(29, 29, 87);
-    background-color: rgb(100, 70, 34);
-    box-shadow: 0 5px 5px rgb(0,0,0,0.5);
-    height: 100px;
-    width: 200px;
-    display: flex;
-    margin: 10px;
-    padding: 0 20px;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 10px;
-    cursor: pointer;
+.pokemon_card {
+  border: solid 5px rgb(29, 29, 87);
+  background-color: rgb(100, 70, 34);
+  box-shadow: 0 5px 5px rgb(0, 0, 0, 0.5);
+  height: 100px;
+  width: 200px;
+  display: flex;
+  margin: 10px;
+  padding: 0 20px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  cursor: pointer;
 }
-

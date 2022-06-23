@@ -1,63 +1,70 @@
-.image {
-    height: 300px;
-    margin: 20px;
-    width: 250px;
+.pokemon_sprite {
+  height: 300px;
+  margin: 20px;
+  width: 250px;
+  display: flex;
 }
 
-.nome {
-    font-size: 50px;
-    display: flex;
-    width: 200px;
+.pokemon_name {
+  font-size: 50px;
+  display: flex;
+  width: 200px;
+  text-transform: uppercase;
 }
 
-.type {
-    display: flex;
-    width: 100px;
+.pokemons_type {
+  display: flex;
+  flex-direction: column;
+  background-color: #e83e3e;
+  padding: 10px;
+  height: 150px;
+  width: 100px;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px rgb(0, 0, 0, 0.5);
 }
 
-.info {
-    display: flex;
-    border-radius: 10px;
-    padding: 20px;
-    height: 300px;
-    width: 500px;
-    justify-content: space-between; 
+.details_container {
+  display: flex;
+  border-radius: 10px;
+  padding: 20px;
+  height: 300px;
+  width: 500px;
+  justify-content: space-between;
 }
 
-.more_info {
-    display: flex;
-    flex-direction: row;
-    height: 300px;
-    width: 400px;
-    
+.info_cards {
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+  width: 400px;
 }
 
-.abilities {
-    width: 150px;
-    height: 200px;
-    display: flex;
-    align-self: flex-start;
-    margin: 20px;
-    background-color: rgb(189, 156, 116);
-    border-radius: 10px;
-    padding: 20px;
-    flex-direction: column;
-    box-shadow: 0 5px 5px rgb(0,0,0,0.5);
+.abilities_card {
+  width: 150px;
+  height: 200px;
+  display: flex;
+  align-self: flex-start;
+  margin: 20px;
+  background-color: rgb(189, 156, 116);
+  border-radius: 10px;
+  padding: 20px;
+  flex-direction: column;
+  box-shadow: 0 5px 5px rgb(0, 0, 0, 0.5);
 }
 
-.stats {
-    width: 150px;
-    height: 200px;
-    display: flex;
-    align-self: flex-end;
-    margin: 20px;
-    background-color: rgb(189, 156, 116);
-    border-radius: 10px;
-    padding: 20px;
-    flex-direction: column;
-    box-shadow: 0 5px 5px rgb(0,0,0,0.5);
+.stats_card {
+  width: 150px;
+  height: 200px;
+  display: flex;
+  align-self: flex-end;
+  margin: 20px;
+  background-color: rgb(189, 156, 116);
+  border-radius: 10px;
+  padding: 20px;
+  flex-direction: column;
+  box-shadow: 0 5px 5px rgb(0, 0, 0, 0.5);
 }
 
 .stats_size {
-    font-size: 19px;
+  font-size: 19px;
 }

@@ -1,10 +1,10 @@
 import React from "react";
-import Pokedex from "../Pokedex/Pokedex";
+import Pokedex from "../components/Pokedex/Pokedex";
 import "./Home.css";
 
 const Home = () => {
   return (
-    <div className="page">
+    <div className="home_wrapper">
       <Pokedex />
     </div>
   );
