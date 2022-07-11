@@ -8,7 +8,7 @@ const PokeInfo = ({ pokemon }) => {
         ""
       ) : (
         <>
-          <div className="details_container">
+          <div className="details_container" key={pokemon.id}>
             <h1 className="pokemon_name">{pokemon.name}</h1>
             {!pokemon.sprites.other.dream_world.front_default ? (
               <img

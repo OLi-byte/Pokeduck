@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./Search.css";
 
-const Search = ({ setPokemons, setUrl, pokemon }) => {
+const Search = ({ setPokemons, setUrl }) => {
   const [paginationInputData, setPaginationInputData] = useState("");
-  const [searchByIdInputData, setSearchByIdInputData] = useState("");
+  const [searchByNameInputData, setSearchByNameInputData] = useState("");
 
   const handleInputPaginationChange = (e) => {
     setPaginationInputData(e.target.value);
@@ -11,27 +11,20 @@ const Search = ({ setPokemons, setUrl, pokemon }) => {
 
   const handlePagination = () => {
     setPokemons([]);
-    setUrl(
-      `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${
-        paginationInputData - 1
-      }`
-    );
+    setUrl(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${paginationInputData - 1}`);
     setPaginationInputData("");
   };
 
   const handleSearchByIdInput = (e) => {
-    setSearchByIdInputData(e.target.value);
+    setSearchByNameInputData(e.target.value);
   };
 
-  const handleSearchById = () => {
+  const filterName = () => {
     setPokemons([]);
-    setUrl(
-      `https://pokeapi.co/api/v2/pokemon?limit=1&offset=${
-        searchByIdInputData - 1
-      }`
-    );
-    setSearchByIdInputData("");
+    setUrl(`https://pokeapi.co/api/v2/pokemon/${searchByNameInputData}`);
+    setSearchByNameInputData("");
   };
+
   return (
     <div className="inputs_wrapper">
       <input
@@ -49,16 +42,26 @@ const Search = ({ setPokemons, setUrl, pokemon }) => {
 
       <input
         onChange={handleSearchByIdInput}
-        value={searchByIdInputData}
+        value={searchByNameInputData}
         className="search_Input"
-        placeholder="SearchById"
+        placeholder="SearchByName"
         type="text"
         onKeyPress={(e) => {
           if (e.key === "Enter") {
-            handleSearchById();
+            filterName();
+          } else if (e.key === "<") {
+            setUrl("https://pokeapi.co/api/v2/pokemon/");
           }
         }}
       />
+
+      <button className="search_button" onClick={() => {
+        if(paginationInputData !== "") {
+          handlePagination();
+        } else {
+          filterName();
+        }
+      }}>serach</button>
     </div>
   );
 };

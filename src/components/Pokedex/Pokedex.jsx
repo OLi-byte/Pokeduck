@@ -9,35 +9,51 @@ const Pokedex = () => {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pokedex, setPokedex] = useState();
-  const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon?limit=20");
+  const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
   const [previousUrl, setPreviousUrl] = useState();
   const [nextUrl, setNextUrl] = useState();
   const shouldLog = useRef(true);
 
-  const getPokemons = async (res) => {
-    res.map(async (pokemon) => {
-      const result = await axios.get(pokemon.url);
-      setPokemons((state) => {
-        state = [...state, result.data];
-        state.sort((a, b) => (a.id > b.id ? 1 : -1));
-        return state;
-      });
-    });
-  };
-
   useEffect(() => {
-    if (shouldLog.current) {
-      shouldLog.current = false;
-      const fetchPokemons = async () => {
-        setLoading(true);
-        const res = await axios.get(url);
-        setPreviousUrl(res.data.previous);
-        setNextUrl(res.data.next);
-        getPokemons(res.data.results);
-        setLoading(false);
-      };
-      fetchPokemons();
+    const getPokemons = async (res) => {
+      res.map(async (pokemon) => {
+        const result = await axios.get(pokemon.url);
+        setPokemons((state) => {
+          state = [...state, result.data];
+          state.sort((a, b) => (a.id > b.id ? 1 : -1));
+          return state;
+        });
+      });
+    };
+
+    const filterPokemon = async () => {
+      const result = await axios.get(url);
+      setPokemons((state) => {
+        state =  [result.data];  
+        return state;
+      })
+  
+    };
+    
+      if (shouldLog.current) {
+        shouldLog.current = false;
+        const fetchPokemons = async () => {
+          setLoading(true);
+          const res = await axios.get(url);
+            if(!res.data.results) {
+              filterPokemon(res.data);
+              setNextUrl(`https://pokeapi.co/api/v2/pokemon/${res.data.id +1}`);
+              setPreviousUrl(`https://pokeapi.co/api/v2/pokemon/${res.data.id -1}`);
+            } else {
+              getPokemons(res.data.results); 
+              setPreviousUrl(res.data.previous);
+              setNextUrl(res.data.next);
+            }
+          setLoading(false);
+        };
+        fetchPokemons();
     }
+
   }, [url]);
 
   return (
@@ -76,7 +92,9 @@ const Pokedex = () => {
               <Search
                 setPokemons={setPokemons}
                 setUrl={setUrl}
-                pokemon={pokedex}
+                pokemon={pokemons}
+                loading={loading}
+                setLoading={setLoading}
               />
             ) : (
               {}
@@ -85,7 +103,7 @@ const Pokedex = () => {
         </div>
       </div>
       <div className="pokedex-container">
-        <PokeInfo pokemon={pokedex} shouldLog={shouldLog} />
+        <PokeInfo pokemon={pokedex} shouldLog={shouldLog}/>
       </div>
     </>
   );
