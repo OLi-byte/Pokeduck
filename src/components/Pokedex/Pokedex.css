@@ -67,3 +67,12 @@
   border-bottom-right-radius: 10px;
   width: 0px;
 }
+
+.error_message {
+  font-weight: bold;
+}
+
+.handle_error {
+  display: flex;
+  flex-direction: column;
+}
