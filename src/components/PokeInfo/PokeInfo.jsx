@@ -25,8 +25,8 @@ const PokeInfo = ({ pokemon }) => {
             )}
             <div className="pokemons_type">
               <h1>Type: </h1>
-              {pokemon.types.map((pokeTypes) => {
-                return <h1>{pokeTypes.type.name}</h1>;
+              {pokemon.types.map((pokeTypes, index) => {
+                return <h1 key={index}>{pokeTypes.type.name}</h1>;
               })}
             </div>
           </div>

@@ -69,8 +69,7 @@ const Pokedex = () => {
         {
           (error === true) ? (
             <div className="handle_error">
-            <h1 className="error_message">{"Nenhum pokemon encontrado :("}</h1>
-            <h2>O Psyduck está em choque</h2>
+            <h1 className="error_message">{"Nenhum pokemon encontrado"}</h1>
             <img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/54.svg" alt = ""/>
             </div>
           ) : (
